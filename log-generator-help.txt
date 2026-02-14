@@ -1,0 +1,10 @@
+Usage: python3.9 trafficGenerator.py <ip> <port> <log_file> <count> <eps> <protocol> "
+              "[--format rfc3164|raw] [--mode paced|burst] [--burst-delay seconds] "
+              "[--tcp-no-newline] [--stop-at-eof]")
+        print("  protocol: 1=TCP, 0=UDP
+
+Sample :
+
+192.168.242.252 514 task1/log1.json 1 500 1 --mode burst --burst-delay 2 --format raw --stop-at-eof
+
+send whole log1.json 1 time without BSD header with 2 second delay after each 500 logs

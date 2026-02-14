@@ -1,0 +1,3 @@
+seperator.py filename count
+
+it splits the filename to multiple files
