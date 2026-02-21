@@ -1,10 +1,27 @@
-Usage: python3.9 trafficGenerator.py <ip> <port> <log_file> <count> <eps> <protocol> "
-              "[--format rfc3164|raw] [--mode paced|burst] [--burst-delay seconds] "
-              "[--tcp-no-newline] [--stop-at-eof]")
-        print("  protocol: 1=TCP, 0=UDP
+Usage: python3.9 loggen-new.py <ip> <port> <log_file|dir|glob> <count> <eps> <protocol> [--format rfc3164|raw] [--mode paced|burst] [--burst-delay seconds] [--tcp-no-newline] [--stop-at-eof] [--service fallbackName] [--service-map "a.log=svcA,b.log=svcB"]
+  protocol: 1=TCP, 0=UDP
+
 
 Sample :
 
 192.168.242.252 514 task1/log1.json 1 500 1 --mode burst --burst-delay 2 --format raw --stop-at-eof
 
 send whole log1.json 1 time without BSD header with 2 second delay after each 500 logs
+
+
+
+python3.9 loggen-new.py 192.168.242.252 514 /root/pcap/ 1 500 1 --mode burst --burst-delay 2 --format rfc3164 --stop-at-eof --service my_other_service
+
+## to add rsyslog tag for all logs together
+
+python3.9 loggen-new.py 192.168.242.252 514 /root/pcap/ 1 500 1 --mode burst --burst-delay 2 --format rfc3164 --stop-at-eof --service-map "custom.log=custom_service,another.log=another_service"
+
+
+## to map each log file name for rsyslog service name
+
+
+python3.9 /root/Log_Repository/sang/loggen-new.py 192.168.242.252 514 /root/Log_Repository/sang/task3-rdpbruteforce/ 1 300 1 --mode burst --burst-delay 5 --format raw --stop-at-eof
+
+
+## send all log files in one directory at the same time
+
